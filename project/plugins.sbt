@@ -4,3 +4,4 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.8.0")
 
 addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.4.0")
 addSbtPlugin("ch.epfl.scala" % "sbt-scalajs-bundler" % "0.20.0")
+addSbtPlugin("ch.epfl.lamp" % "sbt-dotty" % "0.5.2")

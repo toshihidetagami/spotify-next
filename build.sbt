@@ -33,11 +33,11 @@ val addVersionSpecificScalacSettings = scalacOptions ++= {
 }
 
 val commonSettings = Seq(
-  scalaVersion := "2.13.4",
+  scalaVersion := "3.0.0-RC1",
   scalacOptions -= "-Xfatal-warnings",
   scalacOptions ++= Seq("-Ymacro-annotations"),
   libraryDependencies ++= Seq(
-    "org.typelevel" %%% "cats-effect" % "2.3.1"
+    "org.typelevel" %%% "cats-effect" % "3.0.0-RC2"
   ),
   addCompilerPlugins,
   addVersionSpecificScalacSettings
@@ -53,10 +53,10 @@ val front = project
   .settings(commonSettings)
   .settings(
     libraryDependencies ++= Seq(
-      "me.shadaj" %%% "slinky-core" % "0.6.7",
-      "me.shadaj" %%% "slinky-web" % "0.6.7",
-      "me.shadaj" %%% "slinky-hot" % "0.6.7",
-      "me.shadaj" %%% "slinky-styled-components" % "0.1.0+9-38941d55"
+      // "me.shadaj" %%% "slinky-core" % "0.6.7",
+      // "me.shadaj" %%% "slinky-web" % "0.6.7",
+      // "me.shadaj" %%% "slinky-hot" % "0.6.7"
+      // "me.shadaj" %%% "slinky-styled-components" % "0.1.0+9-38941d55"
     ),
     //
     fastOptJS / webpackConfigFile := Some(baseDirectory.value / "webpack" / "webpack-fastopt.config.js"),
@@ -93,19 +93,20 @@ val next =
     .settings(commonSettings)
     .settings(
       libraryDependencies ++= Seq(
-        // no macros
         "org.typelevel" %% "cats-mtl" % "1.1.2",
-        "dev.profunktor" %% "console4cats" % "0.8.1",
-        "com.monovore" %% "decline-effect" % "1.3.0",
-        "org.http4s" %% "http4s-dsl" % "0.21.18",
-        "org.http4s" %% "http4s-blaze-server" % "0.21.18",
-        "org.http4s" %% "http4s-blaze-client" % "0.21.18",
-        "org.http4s" %% "http4s-circe" % "0.21.18",
         "ch.qos.logback" % "logback-classic" % "1.2.3",
-        "io.circe" %% "circe-parser" % "0.13.0",
-        "io.circe" %% "circe-literal" % "0.13.0",
-        // yes macros
+        // this is fine actually, probably can be replaced with just monocle after full switch to scala 3
         "com.github.julien-truffaut" %% "monocle-macro" % "3.0.0-M1"
+        // not built for scala 3 yet
+        // "com.monovore" %% "decline-effect" % "1.3.0",
+        // "org.http4s" %% "http4s-dsl" % "1.0.0-M16",
+        // "org.http4s" %% "http4s-blaze-server" % "1.0.0-M16",
+        // "org.http4s" %% "http4s-blaze-client" % "1.0.0-M16",
+        // "org.http4s" %% "http4s-circe" % "1.0.0-M16",
+        // "io.circe" %% "circe-literal" % "0.14.0-M3",
+
+        // this one is only published for 3.0.0-M3
+        // "io.circe" %% "circe-parser" % "0.14.0-M3",
       )
     )
     .settings(name := "spotify-next")
