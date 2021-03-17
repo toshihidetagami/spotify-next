@@ -74,7 +74,7 @@ object Program {
       _      <- Console[F].putStrLn("Saved token to file")
     } yield ()
 
-  def refreshUserToken[F[_]: Console: Login: ConfigLoader: MonadError[*[_], Throwable]](
+  def refreshUserToken[F[_]: Console: Login: ConfigLoader: MonadThrow](
     refreshToken: RefreshToken
   ): F[Unit] =
     for {

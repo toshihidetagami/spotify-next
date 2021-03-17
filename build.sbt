@@ -37,6 +37,7 @@ val commonSettings = Seq(
   scalacOptions -= "-Xfatal-warnings",
   scalacOptions ++= Seq("-Ymacro-annotations"),
   libraryDependencies ++= Seq(
+    //gotta do this update first
     "org.typelevel" %%% "cats-effect" % "3.0.0-RC2"
   ),
   addCompilerPlugins,
@@ -95,18 +96,15 @@ val next =
       libraryDependencies ++= Seq(
         "org.typelevel" %% "cats-mtl" % "1.1.2",
         "ch.qos.logback" % "logback-classic" % "1.2.3",
-        // this is fine actually, probably can be replaced with just monocle after full switch to scala 3
-        "com.github.julien-truffaut" %% "monocle-macro" % "3.0.0-M1"
+        "com.github.julien-truffaut" %% "monocle-core" % "3.0.0-M3",
         // not built for scala 3 yet
         // "com.monovore" %% "decline-effect" % "1.3.0",
-        // "org.http4s" %% "http4s-dsl" % "1.0.0-M16",
-        // "org.http4s" %% "http4s-blaze-server" % "1.0.0-M16",
-        // "org.http4s" %% "http4s-blaze-client" % "1.0.0-M16",
-        // "org.http4s" %% "http4s-circe" % "1.0.0-M16",
-        // "io.circe" %% "circe-literal" % "0.14.0-M3",
-
-        // this one is only published for 3.0.0-M3
-        // "io.circe" %% "circe-parser" % "0.14.0-M3",
+        "org.http4s" %% "http4s-dsl" % "1.0.0-M17",
+        "org.http4s" %% "http4s-blaze-server" % "1.0.0-M17",
+        "org.http4s" %% "http4s-blaze-client" % "1.0.0-M17",
+        "org.http4s" %% "http4s-circe" % "1.0.0-M17",
+        // "io.circe" %% "circe-literal" % "0.14.0-M4",
+        "io.circe" %% "circe-parser" % "0.14.0-M4"
       )
     )
     .settings(name := "spotify-next")
